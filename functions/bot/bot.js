@@ -118,19 +118,20 @@ function generateQuestion() {
 bot.command("geography", (ctx) => {
   if (questionsGeography.length > 0) {
     generateQuestion();
+    console.log(randomElement.answer)
     ctx.reply(randomElement.question);
     questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
   } else ctx.reply("Вопросы закончились");
 });
 
-bot.on("message", (ctx) => {
-  if (ctx.message.text === randomElement.answer) {
-    ctx.reply("Верно!");
-    questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
-  } else {
-    ctx.reply("Неверно!");
-  }
-});
+// bot.on("message", (ctx) => {
+//   if (ctx.message.text === randomElement.answer) {
+//     ctx.reply("Верно!");
+//     questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
+//   } else {
+//     ctx.reply("Неверно!");
+//   }
+// });
 
 // bot.on("message", (ctx) => {
 //   if (ctx.message.text === randomElement.answer) {
