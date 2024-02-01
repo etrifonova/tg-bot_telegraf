@@ -127,14 +127,14 @@ bot.command("geography", (ctx) => {
   } else ctx.reply("Вопросы закончились");
 });
 
-// bot.on("message", (ctx) => {
-//   if (ctx.message.text === randomElement.answer) {
-//     ctx.reply("Верно!");
-//     questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
-//   } else {
-//     ctx.reply("Неверно!");
-//   }
-// });
+bot.on("message", (ctx) => {
+  if (ctx.message.text === randomElement.answer) {
+    ctx.reply("Верно!");
+    questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
+  } else {
+    ctx.reply("Неверно!");
+  }
+});
 
 // bot.on("message", (ctx) => {
 //   if (ctx.message.text === randomElement.answer) {
