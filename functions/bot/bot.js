@@ -129,12 +129,11 @@ bot.command("geography", (ctx) => {
 
 bot.on("message", (ctx) => {
   if (ctx.message.text === randomElement.answer) {
-    ctx.reply("Верно!" + randomElement.question);
     questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
-    // randomElement = questionsGeography.map((element) => element)[
-    //     Math.floor(Math.random() * questionsGeography.length)
-    //   ];
-    // ctx.reply(randomElement.question);
+    randomElement = questionsGeography.map((element) => element)[
+        Math.floor(Math.random() * questionsGeography.length)
+      ];
+    ctx.reply("Верно!\n" + randomElement.question);
   } else {
     ctx.reply("Неверно!");
   }
