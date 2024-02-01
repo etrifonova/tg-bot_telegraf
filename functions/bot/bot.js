@@ -2,9 +2,9 @@ const { Telegraf } = require("telegraf")
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
 bot.start(ctx => {
-  console.log("Received /start command")
+  console.log("It's alive!")
   try {
-    return ctx.reply("Hi")
+    return ctx.reply("Hello there")
   } catch (e) {
     console.error("error in start action:", e)
     return ctx.reply("Error occured")
