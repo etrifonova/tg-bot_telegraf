@@ -1,6 +1,6 @@
 const { Telegraf } = require("telegraf")
 const bot = new Telegraf(process.env.BOT_TOKEN)
-const questionsGeography = require("questions.js");
+const questionsGeography = require("../../questions");
 
 bot.start(ctx => {
   console.log("It's alive!")
