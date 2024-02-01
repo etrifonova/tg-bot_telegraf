@@ -60,15 +60,15 @@ bot.command("geography", (ctx) => {
     if (ctx.message.text === randomElement.answer) {
       ctx.reply("Верно!");
       questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
-      if (questionsGeography.length > 0) {
-        generateQuestion();
-        setTimeout(() => {
-          ctx.reply(randomElement.question);
-      }, 1000)
+    //   if (questionsGeography.length > 0) {
+    //     generateQuestion();
+    //     setTimeout(() => {
+    //       ctx.reply(randomElement.question);
+    //   }, 1000)
             
-        } else {
-          ctx.reply("Вопросы закончились")  
-        }
+    //     } else {
+    //       ctx.reply("Вопросы закончились")  
+    //     }
       }    
       else if (ctx.message.text === "/ответ") {
       ctx.reply(randomElement.answer);
@@ -79,6 +79,18 @@ bot.command("geography", (ctx) => {
     } else {
       ctx.reply("Неверно!");
     }
+  });
+
+  bot.command("next", (ctx) => {
+    if (questionsGeography.length > 0) {
+      generateQuestion();
+      setTimeout(() => {
+        ctx.reply(randomElement.question);
+    }, 1000)
+          
+      } else {
+        ctx.reply("Вопросы закончились")  
+      }
   });
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
