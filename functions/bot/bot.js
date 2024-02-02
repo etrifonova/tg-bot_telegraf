@@ -125,7 +125,7 @@ bot.command("geography", (ctx) => {
     randomElement = questionsGeography.map((element) => element)[
         Math.floor(Math.random() * questionsGeography.length)
       ];
-    console.log(randomElement[answer])
+    // console.log(randomElement[answer])
     ctx.reply(randomElement.question);
     questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
   } else ctx.reply("Вопросы закончились");
