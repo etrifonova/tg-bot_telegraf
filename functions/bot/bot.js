@@ -48,7 +48,7 @@ bot.on("message", (ctx) => {
     ctx.reply("Верно!");
     if (questionsGeography.length === 0) {
       questionsGeography = questions;
-      console.log(questionsGeography.length);
+      console.log(questions.length);
       ctx.reply("Вопросы закончились");
     }
   } else {
