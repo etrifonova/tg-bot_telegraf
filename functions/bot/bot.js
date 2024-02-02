@@ -146,7 +146,7 @@ bot.on("message", (ctx) => {
         ctx.reply("Верно! \n \n Вопросы закончились");
       }
   } else {
-    ctx.reply("Неверно!");
+    ctx.reply("Неверно! \n \n " + answer);
   }
 });
 
