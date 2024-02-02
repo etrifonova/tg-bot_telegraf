@@ -127,8 +127,8 @@ bot.command("geography", (ctx) => {
   } else ctx.reply("Вопросы закончились");
 });
 
+bot.on("message", (ctx) => {
 for (let i = questionsGeography.length; i > 0; i--) {
-  bot.on("message", (ctx) => {
     if (ctx.message.text === randomElement.answer) {
       questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
       randomElement = generateQuestion();
@@ -136,8 +136,8 @@ for (let i = questionsGeography.length; i > 0; i--) {
       } else {
       ctx.reply("Неверно!");
     }
-  });
-}
+  };
+});
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
 exports.handler = async (event) => {
