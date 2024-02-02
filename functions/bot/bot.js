@@ -130,6 +130,7 @@ bot.command("geography", (ctx) => {
 bot.on("message", (ctx) => {
   if (ctx.message.text === randomElement.answer) {
     questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
+    randomElement = generateQuestion();
     ctx.reply("Верно! \n \n " + randomElement.question + " \n \n " + questionsGeography.length);
     } else {
     ctx.reply("Неверно!");
