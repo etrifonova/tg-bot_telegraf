@@ -141,7 +141,7 @@ bot.on("message", (ctx) => {
       ];
     answer = randomElement.answer;
       if (questionsGeography.length > 0) {
-        ctx.reply("Верно! \n \n " + randomElement.question);
+        ctx.reply("Верно! \n \n " + randomElement.question + " \n \n " + questionsGeography.length);
       } else {
         ctx.reply("Верно! \n \n Вопросы закончились");
       }
