@@ -129,7 +129,6 @@ bot.command("geography", (ctx) => {
       answer = randomElement.answer;
     // console.log(randomElement[answer])
     ctx.reply(randomElement.question + "\n" + answer);
-    questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
   } else ctx.reply("Вопросы закончились");
 });
 
@@ -143,6 +142,7 @@ bot.on("message", (ctx) => {
       if (questionsGeography.length > 0) {
         ctx.reply("Верно! \n \n " + randomElement.question + " \n \n " + questionsGeography.length);
       } else {
+        answer = null;
         ctx.reply("Верно! \n \n Вопросы закончились");
       }
   } else {
