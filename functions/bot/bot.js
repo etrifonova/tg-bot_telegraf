@@ -123,19 +123,19 @@ function generateQuestion() {
 bot.command("geography", (ctx) => {
   if (questionsGeography.length > 0) {
     randomElement = generateQuestion();
-    console.log(randomElement[answer])
-    ctx.reply(randomElement.question + "\n" + answer);
+    console.log(randomElement)
+    ctx.reply(randomElement.question);
   } else ctx.reply("Вопросы закончились");
 });
 
-bot.on("message", (ctx) => {
-  if (ctx.message.text === answer) {
-    questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
-    ctx.reply("Верно! \n \n " + randomElement.question + " \n \n " + questionsGeography.length);
-    } else {
-    ctx.reply("Неверно!");
-  }
-});
+// bot.on("message", (ctx) => {
+//   if (ctx.message.text === answer) {
+//     questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
+//     ctx.reply("Верно! \n \n " + randomElement.question + " \n \n " + questionsGeography.length);
+//     } else {
+//     ctx.reply("Неверно!");
+//   }
+// });
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
 exports.handler = async (event) => {
