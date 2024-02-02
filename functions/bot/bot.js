@@ -9,8 +9,6 @@ const questions = [
   {question: "Какой горный хребет является самым высоким на Земле?", answer: "Гималаи"},
 ]
 
-let randomElement;
-
 bot.start((ctx) => {
   console.log("It's alive!");
   try {
@@ -21,6 +19,9 @@ bot.start((ctx) => {
   }
 });
 
+let randomElement;
+let questionsGeography = questions.slice(0);
+
 function generateQuestion() {
   randomElement = questionsGeography.map((element) => element)[
     Math.floor(Math.random() * questionsGeography.length)
@@ -29,9 +30,8 @@ function generateQuestion() {
 }
 
 bot.command("geography", (ctx) => {
-  questionsGeography = questions.slice(0);
   randomElement = generateQuestion();
-  console.log(randomElement);
+  console.log(questionsGeography.length);
   ctx.reply(randomElement.question + "\n" + questionsGeography.length);
 });
 
@@ -47,7 +47,7 @@ bot.on("message", (ctx) => {
     ctx.reply("Верно!");
     if (questionsGeography.length === 0) {
       questionsGeography = questions.slice(0);
-      console.log(questions.length);
+      console.log(questionsGeography.length);
       ctx.reply("Вопросы закончились");
     }
   } else {
