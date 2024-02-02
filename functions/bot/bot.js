@@ -11,7 +11,7 @@ const questions = [
     answer: "Гималаи",
   },
   {
-    question: "В какой стране находится Сахара, крупнейшая пустыня в мире?",
+    question: "В какой стране находится большая часть пустыни Сахара?",
     answer: "Алжир",
   },
   {
@@ -118,8 +118,9 @@ function generateQuestion() {
   return randomElement;
 }
 
+randomElement = generateQuestion();
+
 bot.command("geography", (ctx) => {
-  randomElement = generateQuestion();
   console.log(randomElement);
   ctx.reply(randomElement.question + "\n" + questionsGeography.length);
 });
