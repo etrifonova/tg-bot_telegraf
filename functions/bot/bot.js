@@ -2,7 +2,7 @@ const { Telegraf } = require("telegraf");
 const bot = new Telegraf(process.env.BOT_TOKEN);
 // const questionsGeography = require("../../questions");
 
-const questionsGeography = [
+const questions = [
   { question: "Столица Мадагаскара?", answer: "Антананариву" },
   { question: "В какой стране находится Петра?", answer: "Иордания" },
   { question: "На каком языке говорят в Либерии?", answer: "английский" },
@@ -97,7 +97,11 @@ const questionsGeography = [
   },
 ];
 
+let questionsGeography = questions;
+let randomElement;
+
 bot.start((ctx) => {
+  questionsGeography = questions;
   console.log("It's alive!");
   try {
     return ctx.reply("Hello there");
@@ -107,7 +111,7 @@ bot.start((ctx) => {
   }
 });
 
-let randomElement;
+
 // function generateQuestion() {
 //   randomElement = questionsGeography.map((element) => element)[
 //     Math.floor(Math.random() * questionsGeography.length)
@@ -133,7 +137,11 @@ bot.on("message", (ctx) => {
     randomElement = questionsGeography.map((element) => element)[
         Math.floor(Math.random() * questionsGeography.length)
       ];
-    ctx.reply("Верно!\n" + randomElement.question);
+      if (questionsGeography.length > 0) {
+        ctx.reply("Верно! \n \n " + randomElement.question);
+      } else {
+        ctx.reply("Верно! \n \n Вопросы закончились");
+      }
   } else {
     ctx.reply("Неверно!");
   }
