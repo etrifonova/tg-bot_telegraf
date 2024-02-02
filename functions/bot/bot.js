@@ -127,8 +127,7 @@ bot.command("geography", (ctx) => {
   } else ctx.reply("Вопросы закончились");
 });
 
-bot.command("message", (ctx) => {
-  message = ctx.message.text;
+bot.on("message", (ctx) => {
   if (ctx.message.text === randomElement.answer) {
     questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
     ctx.reply("Верно! \n \n " + randomElement.question + " \n \n " + questionsGeography.length);
