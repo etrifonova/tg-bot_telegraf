@@ -124,7 +124,7 @@ bot.command("geography", (ctx) => {
   if (questionsGeography.length > 0) {
     randomElement = generateQuestion();
     console.log(randomElement)
-    ctx.reply(randomElement.question);
+    ctx.reply(randomElement.question + "\n" + randomElement.answer);
   } else ctx.reply("Вопросы закончились");
 });
 
