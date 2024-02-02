@@ -9,7 +9,7 @@ const questions = [
   {question: "Какой горный хребет является самым высоким на Земле?", answer: "Гималаи"},
 ]
 
-let questionsGeography = questions;
+let questionsGeography = questions.slice(0);;
 let randomElement;
 
 bot.start((ctx) => {
@@ -18,7 +18,7 @@ bot.start((ctx) => {
     return ctx.reply("Hello there");
   } catch (e) {
     console.error("error in start action:", e);
-    return ctx.reply("Error occured");
+    return ctx.reply("Error occurred");
   }
 });
 
