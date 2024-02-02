@@ -133,21 +133,22 @@ bot.command("geography", (ctx) => {
   } else ctx.reply("Вопросы закончились");
 });
 
-// bot.on("message", (ctx) => {
-//   if (ctx.message.text === randomElement[answer]) {
-//     questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
-//     randomElement = questionsGeography.map((element) => element)[
-//         Math.floor(Math.random() * questionsGeography.length)
-//       ];
-//       if (questionsGeography.length > 0) {
-//         ctx.reply("Верно! \n \n " + randomElement.question);
-//       } else {
-//         ctx.reply("Верно! \n \n Вопросы закончились");
-//       }
-//   } else {
-//     ctx.reply("Неверно!");
-//   }
-// });
+bot.on("message", (ctx) => {
+  if (ctx.message.text === answer) {
+    questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
+    randomElement = questionsGeography.map((element) => element)[
+        Math.floor(Math.random() * questionsGeography.length)
+      ];
+      answer = randomElement.answer;
+      if (questionsGeography.length > 0) {
+        ctx.reply("Верно! \n \n " + randomElement.question);
+      } else {
+        ctx.reply("Верно! \n \n Вопросы закончились");
+      }
+  } else {
+    ctx.reply("Неверно!");
+  }
+});
 
 // bot.on("message", (ctx) => {
 //   if (ctx.message.text === randomElement.answer) {
