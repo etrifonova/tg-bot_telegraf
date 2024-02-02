@@ -101,7 +101,6 @@ let questionsGeography = questions;
 let randomElement;
 
 bot.start((ctx) => {
-  questionsGeography = questions;
   console.log("It's alive!");
   try {
     return ctx.reply("Hello there");
@@ -136,6 +135,11 @@ bot.on("message", (ctx) => {
   } else {
     ctx.reply("Неверно!");
   }
+});
+
+bot.command("update", (ctx) => {
+  questionsGeography = questions;
+  ctx.reply(questionsGeography.length);
 });
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
