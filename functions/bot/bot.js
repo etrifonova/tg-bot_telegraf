@@ -123,21 +123,14 @@ bot.command("geography", (ctx) => {
   if (questionsGeography.length > 0) {
     randomElement = generateQuestion();
     console.log(randomElement)
-    ctx.reply(randomElement.question + "\n" + randomElement.answer);
+    ctx.reply(randomElement.question + "\n" + questionsGeography.length);
   } else ctx.reply("Вопросы закончились");
 });
 
 bot.on("message", (ctx) => {
     if (ctx.message.text === randomElement.answer) {
       questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
-      ctx.reply("Верно! \n \n " + randomElement.question + " \n \n " + questionsGeography.length);
-      bot.command("дальше", (ctx) => {
-        if (questionsGeography.length > 0) {
-          randomElement = generateQuestion();
-          console.log(randomElement)
-          ctx.reply(randomElement.question + "\n" + randomElement.answer);
-        } else ctx.reply("Вопросы закончились");
-      });
+      ctx.reply("Верно!");
       } else {
       ctx.reply("Неверно!");
     };
