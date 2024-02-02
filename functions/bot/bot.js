@@ -99,7 +99,6 @@ const questions = [
 
 let questionsGeography = questions;
 let randomElement;
-let answer;
 
 bot.start((ctx) => {
   questionsGeography = questions;
@@ -128,14 +127,14 @@ bot.command("geography", (ctx) => {
   } else ctx.reply("Вопросы закончились");
 });
 
-// bot.on("message", (ctx) => {
-//   if (ctx.message.text === answer) {
-//     questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
-//     ctx.reply("Верно! \n \n " + randomElement.question + " \n \n " + questionsGeography.length);
-//     } else {
-//     ctx.reply("Неверно!");
-//   }
-// });
+bot.command("message", (ctx) => {
+  if (ctx.message.text === randomElement.answer) {
+    questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
+    ctx.reply("Верно! \n \n " + randomElement.question + " \n \n " + questionsGeography.length);
+    } else {
+    ctx.reply("Неверно!");
+  }
+});
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
 exports.handler = async (event) => {
