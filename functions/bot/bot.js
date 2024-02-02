@@ -99,6 +99,7 @@ const questions = [
 
 let questionsGeography = questions;
 let randomElement;
+let answer;
 
 bot.start((ctx) => {
   questionsGeography = questions;
@@ -125,8 +126,9 @@ bot.command("geography", (ctx) => {
     randomElement = questionsGeography.map((element) => element)[
         Math.floor(Math.random() * questionsGeography.length)
       ];
+      answer = randomElement.answer;
     // console.log(randomElement[answer])
-    ctx.reply(randomElement.question + randomElement.answer);
+    ctx.reply(randomElement.question + "\n" + answer);
     questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
   } else ctx.reply("Вопросы закончились");
 });
