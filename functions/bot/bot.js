@@ -128,7 +128,9 @@ bot.on("message", (ctx) => {
   if (ctx.message.text === randomElement.answer) {
     questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
     ctx.reply("Верно!");
-    if (questionsGeography.length > 0) ctx.reply("Вопросы закончились");
+    if (questionsGeography.length > 0) {
+      ctx.reply("Вопросы закончились");
+    }
   } else {
     ctx.reply("Неверно!");
   }
