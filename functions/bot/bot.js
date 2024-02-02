@@ -139,6 +139,7 @@ bot.on("message", (ctx) => {
     randomElement = questionsGeography.map((element) => element)[
         Math.floor(Math.random() * questionsGeography.length)
       ];
+    answer = randomElement.answer;
       if (questionsGeography.length > 0) {
         ctx.reply("Верно! \n \n " + randomElement.question);
       } else {
