@@ -111,7 +111,6 @@ bot.start((ctx) => {
   }
 });
 
-
 function generateQuestion() {
   randomElement = questionsGeography.map((element) => element)[
     Math.floor(Math.random() * questionsGeography.length)
@@ -120,20 +119,19 @@ function generateQuestion() {
 }
 
 bot.command("geography", (ctx) => {
-  if (questionsGeography.length > 0) {
-    randomElement = generateQuestion();
-    console.log(randomElement)
-    ctx.reply(randomElement.question + "\n" + questionsGeography.length);
-  } else ctx.reply("Вопросы закончились");
+  randomElement = generateQuestion();
+  console.log(randomElement);
+  ctx.reply(randomElement.question + "\n" + questionsGeography.length);
 });
 
 bot.on("message", (ctx) => {
-    if (ctx.message.text === randomElement.answer) {
-      questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
-      ctx.reply("Верно!");
-      } else {
-      ctx.reply("Неверно!");
-    };
+  if (ctx.message.text === randomElement.answer) {
+    questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
+    ctx.reply("Верно!");
+    if (questionsGeography.length > 0) ctx.reply("Вопросы закончились");
+  } else {
+    ctx.reply("Неверно!");
+  }
 });
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
