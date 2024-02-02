@@ -9,7 +9,7 @@ const questions = [
   {question: "Какой горный хребет является самым высоким на Земле?", answer: "Гималаи"},
 ]
 
-let questionsGeography = questions.slice(0);;
+let questionsGeography = questions.slice(0);
 let randomElement;
 
 bot.start((ctx) => {
@@ -47,7 +47,7 @@ bot.on("message", (ctx) => {
     randomElement = generateQuestion();
     ctx.reply("Верно!");
     if (questionsGeography.length === 0) {
-      questionsGeography = questions;
+      questionsGeography = questions.slice(0);
       console.log(questions.length);
       ctx.reply("Вопросы закончились");
     }
