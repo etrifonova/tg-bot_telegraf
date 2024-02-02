@@ -113,21 +113,17 @@ bot.start((ctx) => {
 });
 
 
-// function generateQuestion() {
-//   randomElement = questionsGeography.map((element) => element)[
-//     Math.floor(Math.random() * questionsGeography.length)
-//   ];
-//   return randomElement;
-// }
+function generateQuestion() {
+  randomElement = questionsGeography.map((element) => element)[
+    Math.floor(Math.random() * questionsGeography.length)
+  ];
+  return randomElement;
+}
 
 bot.command("geography", (ctx) => {
   if (questionsGeography.length > 0) {
-    // generateQuestion();
-    randomElement = questionsGeography.map((element) => element)[
-        Math.floor(Math.random() * questionsGeography.length)
-      ];
-      answer = randomElement.answer;
-    // console.log(randomElement[answer])
+    randomElement = generateQuestion();
+    console.log(randomElement[answer])
     ctx.reply(randomElement.question + "\n" + answer);
   } else ctx.reply("Вопросы закончились");
 });
@@ -135,43 +131,11 @@ bot.command("geography", (ctx) => {
 bot.on("message", (ctx) => {
   if (ctx.message.text === answer) {
     questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
-    randomElement = questionsGeography.map((element) => element)[
-        Math.floor(Math.random() * questionsGeography.length)
-      ];
-    answer = randomElement.answer;
-      if (questionsGeography.length > 0) {
-        ctx.reply("Верно! \n \n " + randomElement.question + " \n \n " + questionsGeography.length);
-      } else {
-        answer = null;
-        ctx.reply("Верно! \n \n Вопросы закончились");
-      }
-  } else {
+    ctx.reply("Верно! \n \n " + randomElement.question + " \n \n " + questionsGeography.length);
+    } else {
     ctx.reply("Неверно!");
   }
 });
-
-// bot.on("message", (ctx) => {
-//   if (ctx.message.text === randomElement.answer) {
-//     ctx.reply("Верно!");
-//     questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
-//     if (questionsGeography.length > 0) {
-//       generateQuestion();
-//       setTimeout(() => {
-//         ctx.reply(randomElement.question);
-//       }, 1000);
-//     } else {
-//       ctx.reply("Вопросы закончились");
-//     }
-//   } else if (ctx.message.text === "/ответ") {
-//     ctx.reply(randomElement.answer);
-//     generateQuestion();
-//     setTimeout(() => {
-//       ctx.reply(randomElement.question);
-//     }, 1000);
-//   } else {
-//     ctx.reply("Неверно!");
-//   }
-// });
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
 exports.handler = async (event) => {
