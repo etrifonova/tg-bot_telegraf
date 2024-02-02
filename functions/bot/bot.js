@@ -135,9 +135,9 @@ bot.on("message", (ctx) => {
     randomElement = generateQuestion();
     ctx.reply("Верно!");
     if (questionsGeography.length === 0) {
-      ctx.reply("Вопросы закончились");
       questionsGeography = questions;
-      console.log(questionsGeography.lengthg);
+      console.log(questionsGeography.length);
+      ctx.reply("Вопросы закончились");
     }
   } else {
     ctx.reply("Неверно!");
