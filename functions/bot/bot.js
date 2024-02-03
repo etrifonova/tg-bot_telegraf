@@ -32,7 +32,7 @@ bot.start((ctx) => {
 bot.command("geography", (ctx) => {
   randomElement = generateQuestion();
   console.log(questionsGeography.length);
-  ctx.reply(randomElement.question + "\n" + questionsGeography.length);
+  ctx.reply(randomElement.question + "\n" + questionsGeography.answer);
 });
 
 // bot.command("update", (ctx) => {
