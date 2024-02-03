@@ -10,7 +10,7 @@ const questions = [
 ]
 
 bot.start((ctx) => {
-  console.log("It's alive!");
+  console.log("It's not working the way I need :(");
   try {
     return ctx.reply("Hello there");
   } catch (e) {
