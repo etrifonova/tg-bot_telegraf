@@ -9,16 +9,6 @@ const questions = [
   {question: "Какой горный хребет является самым высоким на Земле?", answer: "Гималаи"},
 ]
 
-bot.start((ctx) => {
-  console.log("It's not working the way I need :(");
-  try {
-    return ctx.reply("Hello there");
-  } catch (e) {
-    console.error("error in start action:", e);
-    return ctx.reply("Error occurred");
-  }
-});
-
 let randomElement;
 let questionsGeography = questions.slice(0);
 
@@ -28,6 +18,16 @@ function generateQuestion() {
   ];
   return randomElement;
 }
+
+bot.start((ctx) => {
+  console.log("It's not working the way I need :(");
+  try {
+    return ctx.reply("Hello there");
+  } catch (e) {
+    console.error("error in start action:", e);
+    return ctx.reply("Error occurred");
+  }
+});
 
 bot.command("geography", (ctx) => {
   randomElement = generateQuestion();
