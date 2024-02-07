@@ -38,7 +38,6 @@ bot.start((ctx) => {
 randomElement = generateQuestion();
 
 bot.command("question", (ctx) => {
-  console.log(questionsPotter.length);
   ctx.reply(randomElement.question);
 });
 
@@ -51,7 +50,7 @@ bot.on("message", (ctx) => {
       questionsPotter.splice(questionsPotter.indexOf(randomElement), 1);
       randomElement = generateQuestion();
       questionsPotter = questions.slice(0);
-      console.log(questionsPotter.length);
+      console.log("Осталось вопросов:" + questionsPotter.length);
       ctx.reply("Верно! \n\n Это был последний вопрос.");
     }
   } else {
