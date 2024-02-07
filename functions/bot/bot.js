@@ -1,6 +1,6 @@
 const { Telegraf } = require("telegraf");
 const bot = new Telegraf(process.env.BOT_TOKEN);
-// const questionsGeography = require("../../questions");
+// const questionsPotter = require("../../questions");
 
 
 // AWS event handler syntax (https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html)
@@ -18,11 +18,11 @@ exports.handler = async (event) => {
 
   
   let randomElement;
-  let questionsGeography = questions.slice(0);
+  let questionsPotter = questions.slice(0);
   
   function generateQuestion() {
-    randomElement = questionsGeography.map((element) => element)[
-      Math.floor(Math.random() * questionsGeography.length)
+    randomElement = questionsPotter.map((element) => element)[
+      Math.floor(Math.random() * questionsPotter.length)
     ];
     return randomElement;
   }
@@ -40,18 +40,18 @@ exports.handler = async (event) => {
   randomElement = generateQuestion();
   
   bot.command("geography", (ctx) => {
-    console.log(questionsGeography.length);
+    console.log(questionsPotter.length);
     ctx.reply(randomElement.question + "\n" + randomElement.answer);
   });
   
   bot.on("message", (ctx) => {
     if (ctx.message.text === randomElement.answer) {
-      questionsGeography.splice(questionsGeography.indexOf(randomElement), 1);
+      questionsPotter.splice(questionsPotter.indexOf(randomElement), 1);
       randomElement = generateQuestion();
       ctx.reply("Верно!");
-      if (questionsGeography.length === 0) {
-        questionsGeography = questions.slice(0);
-        console.log(questionsGeography.length);
+      if (questionsPotter.length === 0) {
+        questionsPotter = questions.slice(0);
+        console.log(questionsPotter.length);
         ctx.reply("Вопросы закончились");
       }
     } else {
