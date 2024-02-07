@@ -3,7 +3,7 @@ const bot = new Telegraf(process.env.BOT_TOKEN);
 // const questionsPotter = require("../../questions");
 
 
-const questionsPotter = [
+const questions = [
   {question: '13 ½ дюйма, тис, перо феникса - чья палочка?', answer: 'Волан-де-Морт'},
   {question: '12¾ дюйма, грецкий орех, сердечная жила дракона - чья палочка?', answer: 'Беллатриса Лестрейндж'},
   {question: '9¼ дюйма, каштан, сердечная жила дракона - чья палочка?', answer: 'Питер Петтигрю'},
