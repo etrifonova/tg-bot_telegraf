@@ -47,7 +47,7 @@ bot.on("message", (ctx) => {
     randomElement = generateQuestion();
     console.log("Осталось вопросов:" + questionsPotter.length);
     ctx.reply("Верно!");
-    if (questionsPotter.length === 2 && ctx.message.text === randomElement.answer) {
+    if (questionsPotter.length == 2 && ctx.message.text === randomElement.answer) {
       questionsPotter.splice(questionsPotter.indexOf(randomElement), 1);
       randomElement = generateQuestion();
       questionsPotter = questions.slice(0);
