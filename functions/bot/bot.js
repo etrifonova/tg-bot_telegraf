@@ -39,7 +39,7 @@ randomElement = generateQuestion();
 
 bot.command("geography", (ctx) => {
   console.log(questionsPotter.length);
-  ctx.reply(randomElement.question + "\n" + randomElement.answer);
+  ctx.reply(randomElement.question);
 });
 
 bot.on("message", (ctx) => {
