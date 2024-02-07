@@ -9,9 +9,9 @@ const questions = [
   {question: '9¼ дюйма, каштан, сердечная жила дракона - чья палочка?', answer: 'Питер Петтигрю'},
   {question: '10 дюймов, боярышник, волос единорога - чья палочка?', answer: 'Драко Малфой'},
   {question: 'Расположите заклинания Гарри Поттера из сцены атаки Пожирателей смерти (из книги) в правильном порядке (цифрами, без пробелов): 1. акцио; 2. вингардиум левиоса; 3. вспыхни (конфринго); 4. импедимента; 5. отключись; 6. экспелиармус', answer: '524361'},
-  {question: 'Операция “Семь Поттеров”: с кем летел Джордж? (напишите имя и фамилию в именительном падеже', answer: 'Римус Люпин'},
-  {question: 'Операция “Семь Поттеров”: с кем летела Гермиона? (напишите имя и фамилию в именительном падеже', answer: 'Кингсли Бруствер'},
-  {question: 'Операция “Семь Поттеров”: с кем летел Фред? (напишите имя и фамилию в именительном падеже', answer: 'Артур Уизли'},
+  {question: 'Операция “Семь Поттеров”: с кем летел Джордж? (напишите имя и фамилию в именительном падеже)', answer: 'Римус Люпин'},
+  {question: 'Операция “Семь Поттеров”: с кем летела Гермиона? (напишите имя и фамилию в именительном падеже)', answer: 'Кингсли Бруствер'},
+  {question: 'Операция “Семь Поттеров”: с кем летел Фред? (напишите имя и фамилию в именительном падеже)', answer: 'Артур Уизли'},
 ]
 
 
@@ -37,7 +37,7 @@ bot.start((ctx) => {
 
 randomElement = generateQuestion();
 
-bot.command("geography", (ctx) => {
+bot.command("question", (ctx) => {
   console.log(questionsPotter.length);
   ctx.reply(randomElement.question);
 });
@@ -47,10 +47,12 @@ bot.on("message", (ctx) => {
     questionsPotter.splice(questionsPotter.indexOf(randomElement), 1);
     randomElement = generateQuestion();
     ctx.reply("Верно!");
-    if (questionsPotter.length === 0) {
+    if (ctx.message.text === randomElement.answer && questionsPotter.length === 1) {
+      questionsPotter.splice(questionsPotter.indexOf(randomElement), 1);
+      randomElement = generateQuestion();
       questionsPotter = questions.slice(0);
       console.log(questionsPotter.length);
-      ctx.reply("Вопросы закончились");
+      ctx.reply("Верно! \n\n Это был последний вопрос.");
     }
   } else {
     ctx.reply("Неверно!");
