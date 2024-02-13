@@ -1,9 +1,18 @@
 const { Telegraf } = require("telegraf");
 const session = require('telegraf/session');
-const bot = new Telegraf(process.env.BOT_TOKEN);
 // const questionsPotter = require("../../questions");
 
-bot.use(session());
+import { Mongo } from "@telegraf/session/mongodb";
+
+const store = Mongo({
+	url: "mongodb://127.0.0.1:27017",
+	database: "telegraf-bot",
+});
+
+const bot = new Telegraf(process.env.BOT_TOKEN, opts);
+
+
+bot.use(session({ store }));
 
 
 const questions = [
