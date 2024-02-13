@@ -1,6 +1,8 @@
 const { Telegraf } = require("telegraf");
+const session = require('telegraf/session');
 const bot = new Telegraf(process.env.BOT_TOKEN);
 // const questionsPotter = require("../../questions");
+
 
 const questions = [
   {
@@ -50,6 +52,8 @@ function generateQuestion() {
   ];
   return randomElement;
 }
+
+bot.use(session());
 
 bot.start((ctx) => {
   console.log("It's not working the way I need :");
