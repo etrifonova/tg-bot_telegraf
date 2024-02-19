@@ -3,8 +3,8 @@ const { Telegraf } = require("telegraf");
 // const questionsPotter = require("../../questions");
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
-app.telegram.getMe().then((botInfo) => {
-  app.options.username = botInfo.username
+bot.telegram.getMe().then((botInfo) => {
+  bot.options.username = botInfo.username
 })
 
 
@@ -128,7 +128,7 @@ function generateQuestion() {
 }
 
 bot.start((ctx) => {
-  console.log("It's not working the way I need :");
+  console.log("It's not working the way I need.");
   try {
     return ctx.reply("Hello there");
   } catch (e) {
