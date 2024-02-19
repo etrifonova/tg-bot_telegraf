@@ -1,7 +1,7 @@
 const { Telegraf } = require("telegraf");
 // const session = require('telegraf/session');
 // const questionsPotter = require("../../questions");
-const bot = new Telegraf(process.env.BOT_TOKEN);
+const bot = new Telegraf(process.env.BOT_TOKEN, {username: 'escaquizbot'});
 
 
 const questions = [
