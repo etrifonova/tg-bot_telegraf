@@ -146,7 +146,7 @@ bot.command("question", (ctx) => {
 bot.on("message", (ctx) => {
   if (
     questionsPotter.length == 1 &&
-    ctx.message.text.trim().toLowerCase() === randomElement.answer.trim().toLowerCase()
+    ctx.message.text.toLowerCase() === randomElement.answer.toLowerCase()
   ) {
     questionsPotter.splice(questionsPotter.indexOf(randomElement), 1);
     randomElement = generateQuestion();
@@ -155,7 +155,7 @@ bot.on("message", (ctx) => {
     ctx.reply("Верно! \n\n Это был последний вопрос.");
     randomElement = generateQuestion();
   }
-  else if (questionsPotter.length > 1 && ctx.message.text.trim().toLowerCase() === randomElement.answer.trim().toLowerCase()) {
+  else if (questionsPotter.length > 1 && ctx.message.text.toLowerCase() === randomElement.answer.toLowerCase()) {
     questionsPotter.splice(questionsPotter.indexOf(randomElement), 1);
     randomElement = generateQuestion();
     console.log("Осталось вопросов:" + questionsPotter.length);
