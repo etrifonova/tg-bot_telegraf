@@ -135,6 +135,7 @@ function generateQuestion() {
 bot.start((ctx) => {
   try {
     questionsPotter = questions.slice(0);
+    console.log("Осталось вопросов:" + questionsPotter.length);
     return ctx.reply("Hello there");
   } catch (e) {
     console.error("error in start action:", e);
