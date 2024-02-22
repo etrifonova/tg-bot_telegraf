@@ -134,6 +134,7 @@ function generateQuestion() {
 
 bot.start((ctx) => {
   try {
+    questionsPotter = questions.slice(0);
     return ctx.reply("Hello there");
   } catch (e) {
     console.error("error in start action:", e);
