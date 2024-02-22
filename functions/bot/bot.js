@@ -133,7 +133,6 @@ function generateQuestion() {
 }
 
 bot.start((ctx) => {
-  console.log("It's not working the way I need.");
   try {
     return ctx.reply("Hello there");
   } catch (e) {
@@ -149,9 +148,11 @@ bot.command("question", (ctx) => {
 });
 
 bot.on("message", (ctx) => {
+  let userAnswer = ctx.message.text.toLowerCase();
+  let correctAnswer = randomElement.answer.toLowerCase();
   if (
     questionsPotter.length == 1 &&
-    ctx.message.text === randomElement.answer
+    userAnswer === correctAnswer
   ) {
     questionsPotter.splice(questionsPotter.indexOf(randomElement), 1);
     randomElement = generateQuestion();
@@ -160,7 +161,7 @@ bot.on("message", (ctx) => {
     ctx.reply("Верно! \n\n Это был последний вопрос.");
     randomElement = generateQuestion();
   }
-  else if (questionsPotter.length > 1 && ctx.message.text === randomElement.answer) {
+  else if (questionsPotter.length > 1 && userAnswer === correctAnswer) {
     questionsPotter.splice(questionsPotter.indexOf(randomElement), 1);
     randomElement = generateQuestion();
     console.log("Осталось вопросов:" + questionsPotter.length);
