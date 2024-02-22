@@ -159,7 +159,7 @@ bot.on("message", (ctx) => {
     questionsPotter = questions.slice(0);
     console.log("Осталось вопросов:" + questionsPotter.length);
     ctx.reply("Верно! \n\n Это был последний вопрос.");
-    randomElement = generateQuestion();
+    // randomElement = generateQuestion();
   }
   else if (questionsPotter.length > 1 && userAnswer === correctAnswer) {
     questionsPotter.splice(questionsPotter.indexOf(randomElement), 1);
